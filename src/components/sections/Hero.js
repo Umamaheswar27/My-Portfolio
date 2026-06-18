@@ -72,7 +72,7 @@ const Hero = () => {
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
             View Projects
           </a>
-          <a href="https://drive.google.com/file/d/1rxCaohRti3uAkSc07NZZUAVoR6frivXX/view?usp=sharing" target="_blank" rel="noreferrer" style={{
+          <a href="https://drive.google.com/file/d/1A3zZ72AUpgBDkIpwQhuoN3MnTJmIzho2/view?usp=sharing" target="_blank" rel="noreferrer" style={{
             fontSize: 13, color: C.text, border: `0.5px solid ${C.border2}`,
             padding: '11px 24px', borderRadius: 7, textDecoration: 'none',
             background: C.bg2, transition: 'border-color 0.2s',
