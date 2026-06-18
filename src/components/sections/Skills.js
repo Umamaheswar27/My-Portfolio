@@ -7,7 +7,7 @@ const groups = [
   { title: 'Backend Engineering',    items: ['Java', 'Spring Boot', 'Hibernate/JPA', 'REST APIs', 'Microservices', 'Spring Security'] },
   { title: 'Frontend',               items: ['Angular', 'TypeScript', 'PrimeNG', 'HTML', 'CSS'] },
   { title: 'Databases',              items: ['PostgreSQL', 'MySQL', 'Oracle', 'Query Optimisation', 'Indexing'] },
-  { title: 'Messaging & Real-Time',  items: ['RabbitMQ', 'WebSocket', 'Event-Driven Architecture', 'Async Workflows'] },
+  { title: 'Messaging & Real-Time',  items: ['RabbitMQ', 'Kafka', 'WebSocket', 'Event-Driven Architecture', 'Async Workflows'] },
   { title: 'Security',               items: ['OAuth 2.0', 'JWT Authentication', 'RBAC', 'Spring Security'] },
   { title: 'Cloud & DevOps',         items: ['AWS', 'Docker (Basics)', 'CI/CD', 'Azure Fundamentals', 'Git', 'Maven', 'Postman'] },
 ];
