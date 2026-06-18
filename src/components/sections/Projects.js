@@ -88,7 +88,7 @@ const Projects = () => {
           ))}
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+        <div className="proj-grid">
           {/* left: overview */}
           <div style={{ background: C.bg2, border: `0.5px solid ${C.border}`, borderRadius: 14, padding: 28, position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: p.color }} />
@@ -150,6 +150,10 @@ const Projects = () => {
           </div>
         </div>
       </div>
+      <style>{`
+        .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        @media (max-width: 768px) { .proj-grid { grid-template-columns: 1fr; gap: 16px; } }
+      `}</style>
     </Section>
   );
 };

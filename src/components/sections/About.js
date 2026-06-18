@@ -18,7 +18,7 @@ const About = () => (
       <SectionTag>About Me</SectionTag>
       <SectionTitle>Engineer who builds for scale,<br />not just for today</SectionTitle>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
+      <div className="about-grid">
         <div>
           <p style={{ fontSize: 15, color: C.muted, lineHeight: 1.85, marginBottom: 18 }}>
             I'm a B.Tech graduate turned full-stack engineer who specialises in production-grade Java systems that survive traffic spikes, distributed failures, and enterprise complexity.
@@ -41,6 +41,10 @@ const About = () => (
         </div>
       </div>
     </div>
+    <style>{`
+      .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+      @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 28px; } }
+    `}</style>
   </Section>
 );
 

@@ -21,7 +21,7 @@ const WhyHireMe = () => (
       <SectionTag>Why Hire Me</SectionTag>
       <SectionTitle>What I bring to your team</SectionTitle>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+      <div className="why-grid">
         {items.map((it, i) => (
           <div key={i} style={{
             background: C.bg2, border: `0.5px solid ${C.border}`,
@@ -40,6 +40,11 @@ const WhyHireMe = () => (
         ))}
       </div>
     </div>
+    <style>{`
+      .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      @media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } }
+    `}</style>
   </Section>
 );
 

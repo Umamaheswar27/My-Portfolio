@@ -73,14 +73,14 @@ const Hero = () => {
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
             View Projects
           </a>
-          <a href="/resume.pdf" download style={{
+          <a href="https://drive.google.com/file/d/1rxCaohRti3uAkSc07NZZUAVoR6frivXX/view?usp=sharing" target="_blank" rel="noreferrer" style={{
             fontSize: 13, color: C.text, border: `0.5px solid ${C.border2}`,
             padding: '11px 24px', borderRadius: 7, textDecoration: 'none',
             background: C.bg2, transition: 'border-color 0.2s',
           }}
             onMouseEnter={e => e.currentTarget.style.borderColor = C.blue}
             onMouseLeave={e => e.currentTarget.style.borderColor = C.border2}>
-            Download Resume
+            View Resume
           </a>
           <a href="#contact" style={{
             fontSize: 13, color: C.muted, border: `0.5px solid ${C.border}`,
@@ -93,9 +93,9 @@ const Hero = () => {
         </div>
 
         {/* stat bar */}
-        <div style={{ display: 'flex', gap: 0, borderTop: `0.5px solid ${C.border}`, paddingTop: 28 }}>
+        <div className="hero-stats">
           {stats.map((s, i) => (
-            <div key={i} style={{
+            <div key={i} className="hero-stat-item" style={{
               flex: 1, paddingRight: 24,
               borderRight: i < stats.length - 1 ? `0.5px solid ${C.border}` : 'none',
               marginRight: i < stats.length - 1 ? 24 : 0,
@@ -111,6 +111,11 @@ const Hero = () => {
         @keyframes fadeSlideIn {
           from { opacity: 0; transform: translateY(6px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-stats { display: flex; gap: 0; border-top: 0.5px solid ${C.border}; padding-top: 28px; }
+        @media (max-width: 480px) {
+          .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 0.5px solid ${C.border}; padding-top: 20px; }
+          .hero-stat-item { padding-right: 0 !important; margin-right: 0 !important; border-right: none !important; }
         }
       `}</style>
     </section>

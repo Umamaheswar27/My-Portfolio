@@ -39,7 +39,7 @@ const Navigation = () => {
               {l}
             </a>
           ))}
-          <a href="mailto:danda.ums09@gmail.com" style={{
+          <a href="#contact" style={{
             fontSize: 12, color: C.blue, border: `0.5px solid ${C.blueBdr}`,
             padding: '7px 18px', borderRadius: 6, textDecoration: 'none',
             background: C.blueDim, transition: 'all 0.2s',

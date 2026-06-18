@@ -20,7 +20,7 @@ const Skills = () => (
       <SectionTag>Skills</SectionTag>
       <SectionTitle>Technology stack</SectionTitle>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
+      <div className="skills-grid">
         {groups.map((g, i) => (
           <div key={i} style={{
             background: C.bg2, border: `0.5px solid ${C.border}`,
@@ -42,6 +42,11 @@ const Skills = () => (
         {tools.map((t, i) => <Chip key={i}>{t}</Chip>)}
       </div>
     </div>
+    <style>{`
+      .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      @media (max-width: 900px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 560px) { .skills-grid { grid-template-columns: 1fr; } }
+    `}</style>
   </Section>
 );
 

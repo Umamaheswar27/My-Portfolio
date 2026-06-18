@@ -30,7 +30,7 @@ const Experience = () => (
       <SectionTag>Experience</SectionTag>
       <SectionTitle>Where I've shipped real things</SectionTitle>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
+      <div className="exp-grid">
         {/* timeline card */}
         <div style={{ background: C.bg2, border: `0.5px solid ${C.border}`, borderRadius: 14, padding: 28, position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, ${C.blue}, ${C.cyan})` }} />
@@ -48,7 +48,7 @@ const Experience = () => (
 
           <div style={{ margin: '18px 0', borderTop: `0.5px solid ${C.border}` }} />
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+          <div className="exp-achievements-grid">
             {achievements.map((a, i) => (
               <div key={i} style={{ background: C.bg3, border: `0.5px solid ${C.border}`, borderRadius: 8, padding: '10px 12px' }}>
                 <div style={{ fontSize: 16, fontWeight: 700, color: C.blue, marginBottom: 4 }}>{a.metric}</div>
@@ -77,6 +77,14 @@ const Experience = () => (
         </div>
       </div>
     </div>
+    <style>{`
+      .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+      .exp-achievements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      @media (max-width: 768px) {
+        .exp-grid { grid-template-columns: 1fr; gap: 24px; }
+        .exp-achievements-grid { grid-template-columns: 1fr; }
+      }
+    `}</style>
   </Section>
 );
 

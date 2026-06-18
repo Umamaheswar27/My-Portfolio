@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { C } from '../../constants/tokens';
 import Section from '../ui/Section';
 import { SectionTag, SectionTitle } from '../ui/Typography';
+
+const SERVICE_ID  = 'service_mdzvhgo';
+const TEMPLATE_ID = 'template_tmbco5p';
+const PUBLIC_KEY  = 'NlqqhoN3cbI1zbPsK';
 
 const links = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/uma-maheswara-sai-danda', icon: 'in', desc: 'linkedin.com/in/uma-maheswara-sai-danda' },
@@ -17,11 +22,19 @@ const inputStyle = {
 };
 
 const Contact = () => {
+  const formRef = useRef();
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
   const handle = e => setForm({ ...form, [e.target.name]: e.target.value });
-  const submit = e => { e.preventDefault(); setSent(true); };
+
+  const submit = e => {
+    e.preventDefault();
+    setStatus('sending');
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      .then(() => { setStatus('sent'); setForm({ name: '', email: '', subject: '', message: '' }); })
+      .catch(() => setStatus('error'));
+  };
 
   return (
     <Section id="contact">
@@ -32,7 +45,7 @@ const Contact = () => {
           Open to full-time roles, contract work, and interesting engineering problems worth solving.
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32 }}>
+        <div className="contact-grid">
           {/* links */}
           <div>
             <p style={{ fontSize: 11, color: C.dim, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 14 }}>Find me at</p>
@@ -59,19 +72,19 @@ const Contact = () => {
 
           {/* form */}
           <div style={{ background: C.bg2, border: `0.5px solid ${C.border}`, borderRadius: 14, padding: 28 }}>
-            {sent ? (
+            {status === 'sent' ? (
               <div style={{ textAlign: 'center', padding: '32px 0' }}>
                 <div style={{ fontSize: 32, marginBottom: 12, color: C.cyan }}>✓</div>
                 <div style={{ fontSize: 16, fontWeight: 600, color: C.text, marginBottom: 8 }}>Message sent!</div>
                 <div style={{ fontSize: 13, color: C.muted }}>I'll get back to you within 24 hours.</div>
               </div>
             ) : (
-              <form onSubmit={submit}>
+              <form ref={formRef} onSubmit={submit}>
                 <p style={{ fontSize: 13, fontWeight: 600, color: C.text, marginBottom: 18 }}>Send a message</p>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
-                  <input name="name" value={form.name} onChange={handle} placeholder="Your name" required style={inputStyle}
+                <div className="contact-form-row">
+                  <input name="from_name" value={form.name} onChange={e => setForm({...form, name: e.target.value})} placeholder="Your name" required style={inputStyle}
                     onFocus={e => e.target.style.borderColor = C.blue} onBlur={e => e.target.style.borderColor = C.border2} />
-                  <input name="email" type="email" value={form.email} onChange={handle} placeholder="Email address" required style={inputStyle}
+                  <input name="from_email" type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} placeholder="Email address" required style={inputStyle}
                     onFocus={e => e.target.style.borderColor = C.blue} onBlur={e => e.target.style.borderColor = C.border2} />
                 </div>
                 <input name="subject" value={form.subject} onChange={handle} placeholder="Subject" style={{ ...inputStyle, marginBottom: 10 }}
@@ -79,20 +92,33 @@ const Contact = () => {
                 <textarea name="message" value={form.message} onChange={handle} placeholder="Your message..." required rows={4}
                   style={{ ...inputStyle, resize: 'vertical', marginBottom: 14 }}
                   onFocus={e => e.target.style.borderColor = C.blue} onBlur={e => e.target.style.borderColor = C.border2} />
-                <button type="submit" style={{
+                {status === 'error' && (
+                  <p style={{ fontSize: 12, color: '#f87171', marginBottom: 10 }}>Something went wrong. Please try again.</p>
+                )}
+                <button type="submit" disabled={status === 'sending'} style={{
                   width: '100%', background: C.blue, color: '#fff',
                   border: 'none', borderRadius: 8, padding: '11px 0', fontSize: 13, fontWeight: 600,
-                  cursor: 'pointer', transition: 'transform 0.15s, box-shadow 0.15s',
+                  cursor: status === 'sending' ? 'not-allowed' : 'pointer',
+                  opacity: status === 'sending' ? 0.7 : 1,
+                  transition: 'transform 0.15s, box-shadow 0.15s',
                 }}
-                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(79,142,247,0.35)'; }}
+                  onMouseEnter={e => { if(status !== 'sending') { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(79,142,247,0.35)'; }}}
                   onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                  Send Message →
+                  {status === 'sending' ? 'Sending...' : 'Send Message →'}
                 </button>
               </form>
             )}
           </div>
         </div>
       </div>
+      <style>{`
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .contact-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        @media (max-width: 768px) {
+          .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+          .contact-form-row { grid-template-columns: 1fr; }
+        }
+      `}</style>
     </Section>
   );
 };
