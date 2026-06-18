@@ -10,7 +10,7 @@ const roles = [
 
 const stats = [
   { n: '2+',  l: 'Years Experience' },
-  { n: '5+',  l: 'Projects Delivered' },
+  { n: '3+',  l: 'Projects Delivered' },
   { n: '40%', l: 'Avg. Efficiency Gain' },
   { n: '10+', l: 'Core Technologies' },
 ];

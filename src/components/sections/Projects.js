@@ -3,61 +3,99 @@ import { C } from '../../constants/tokens';
 import Section from '../ui/Section';
 import { SectionTag, SectionTitle, Chip } from '../ui/Typography';
 
+const green    = '#34d399';
+const greenDim = 'rgba(52,211,153,0.09)';
+const greenBdr = 'rgba(52,211,153,0.28)';
+
 const projects = [
   {
-    tag: 'Real-Time Platform',
+    tag: 'Real-Time Mobility Platform',
     name: 'VALAM',
-    subtitle: 'Real-Time Ride Booking Platform',
+    subtitle: 'Ride Booking & Real-Time Driver Tracking System',
+    role: 'Full Stack Engineer',
+    techFocus: 'Java + Angular',
     color: C.blue, colorDim: C.blueDim, colorBdr: C.blueBdr,
-    problem: 'Needed live driver tracking, ride status synchronisation, and scalable user workflows for a ride-booking platform — all in real time.',
-    solution: 'Built full-stack with Angular + Spring Boot, using WebSocket for bidirectional real-time communication and Google Maps API for geolocation tracking.',
-    stack: ['Angular', 'Spring Boot', 'WebSocket', 'Google Maps API', 'PostgreSQL', 'OAuth 2.0', 'RBAC', 'Java'],
+    problem: 'Ride-booking applications require instant driver assignment, live location tracking, and real-time ride status synchronization. Traditional API polling introduces latency, increased server load, and poor UX when thousands of users are connected simultaneously.',
+    solution: 'Built a scalable ride-booking platform using Angular and Spring Boot. Implemented WebSocket-based bidirectional communication for real-time driver and rider updates, integrated Google Maps APIs for geolocation tracking, and secured all APIs with OAuth 2.0 and role-based access control.',
+    stack: ['Java', 'Spring Boot', 'Angular', 'WebSocket', 'PostgreSQL', 'Google Maps API', 'OAuth 2.0', 'RBAC', 'REST APIs'],
     arch: [
       { label: 'Angular UI',        color: C.blue,   bdr: C.blueBdr,   dim: C.blueDim },
       { label: 'WebSocket Gateway', color: C.cyan,   bdr: C.cyanBdr,   dim: C.cyanDim },
-      { label: 'Spring Boot',       color: C.violet, bdr: C.violetBdr, dim: C.violetDim },
+      { label: 'Spring Boot APIs',  color: C.violet, bdr: C.violetBdr, dim: C.violetDim },
       { label: 'PostgreSQL',        color: C.blue,   bdr: C.blueBdr,   dim: C.blueDim },
     ],
     impact: [
-      { n: '40%',       l: 'API polling reduced' },
-      { n: 'Live',      l: 'Driver tracking' },
-      { n: 'Real-time', l: 'Status updates' },
-      { n: 'Secure',    l: 'OAuth 2.0 + RBAC' },
+      { n: '40%',    l: 'Reduction in API polling traffic' },
+      { n: '<1s',    l: 'Ride status update latency' },
+      { n: 'Live',   l: 'Real-time driver tracking' },
+      { n: 'OAuth',  l: 'Secure multi-role access' },
     ],
     bullets: [
-      'Engineered scalable full-stack features with live ride tracking',
-      'WebSocket for driver tracking, ride updates & status sync',
-      'Google Maps API for route visualisation & geolocation',
-      'Secure RESTful APIs with OAuth-based authentication',
-      'RBAC authorisation for multi-role user access management',
+      'Designed and implemented real-time driver and rider tracking using WebSocket communication',
+      'Built ride lifecycle workflows — booking, assignment, status updates, and trip completion',
+      'Integrated Google Maps APIs for live geolocation tracking and route visualisation',
+      'Developed secure REST APIs with OAuth 2.0 authentication and RBAC authorisation',
+      'Replaced polling architecture with event-driven updates, reducing server load by 40%',
     ],
   },
   {
-    tag: 'Enterprise Platform',
+    tag: 'Enterprise Migration Platform',
     name: 'AECCAR',
-    subtitle: 'Oracle Data Migration Tool',
+    subtitle: 'Oracle Fusion Cloud Migration Accelerator',
+    role: 'Full Stack Engineer',
+    techFocus: 'Java + Angular + Oracle',
     color: C.violet, colorDim: C.violetDim, colorBdr: C.violetBdr,
-    problem: 'Complex enterprise-scale Oracle data migration requiring multi-stage validation, file mapping, and error correction — all done manually.',
-    solution: 'Built Angular + Spring Boot platform invoking Oracle stored procedures, with automated pipelines for upload → map → validate → migrate workflows.',
-    stack: ['Angular', 'Spring Boot', 'Oracle', 'PL/SQL Procedures', 'RBAC', 'Java', 'PostgreSQL'],
+    problem: 'Enterprise Oracle Fusion Cloud migrations involved complex data mapping, validation, transformation, and error correction processes. Heavy manual intervention increased migration timelines and operational overhead significantly.',
+    solution: 'Developed an enterprise migration platform using Angular and Spring Boot that automated Oracle Fusion Cloud migration workflows — including validation pipelines, scheduler-based processing, audit tracking, entitlement management, and retry-based failure recovery.',
+    stack: ['Java', 'Spring Boot', 'Angular', 'Oracle', 'PL/SQL', 'RabbitMQ', 'PostgreSQL', 'RBAC'],
     arch: [
-      { label: 'Angular UI',     color: C.violet, bdr: C.violetBdr, dim: C.violetDim },
-      { label: 'Spring Boot API',color: C.blue,   bdr: C.blueBdr,   dim: C.blueDim },
-      { label: 'RabbitMQ',       color: C.cyan,   bdr: C.cyanBdr,   dim: C.cyanDim },
-      { label: 'Oracle DB',      color: C.violet, bdr: C.violetBdr, dim: C.violetDim },
+      { label: 'Angular UI',      color: C.violet, bdr: C.violetBdr, dim: C.violetDim },
+      { label: 'Spring Boot APIs',color: C.blue,   bdr: C.blueBdr,   dim: C.blueDim },
+      { label: 'RabbitMQ',        color: C.cyan,   bdr: C.cyanBdr,   dim: C.cyanDim },
+      { label: 'Oracle Fusion',   color: C.violet, bdr: C.violetBdr, dim: C.violetDim },
     ],
     impact: [
-      { n: 'Auto',        l: 'Migration workflows' },
-      { n: '↓',           l: 'Manual intervention' },
-      { n: 'Multi-stage', l: 'Validation pipeline' },
-      { n: 'Secure',      l: 'RBAC access control' },
+      { n: '50%',   l: 'Reduction in manual migration effort' },
+      { n: 'Auto',  l: 'End-to-end migration workflows' },
+      { n: 'Retry', l: 'Failure recovery mechanisms' },
+      { n: 'Audit', l: 'Full execution traceability' },
     ],
     bullets: [
-      'Spring Boot APIs invoking Oracle stored procedures for enterprise migration',
-      'Handled data validation across multi-stage migration pipelines',
-      'File upload → mapping → validation → error correction workflow',
-      'Environment-based controls and RBAC secure access',
-      'Reduced manual effort by 40–50% via async event-driven processing',
+      'Developed Spring Boot APIs invoking Oracle stored procedures for Fusion Cloud migration execution',
+      'Implemented scheduler audit logging for execution monitoring and troubleshooting',
+      'Designed retry and failure recovery mechanisms for failed migration batches',
+      'Built entitlement management and role-based access controls across migration modules',
+      'Automated file upload → mapping → validation → migration pipeline end-to-end',
+    ],
+  },
+  {
+    tag: 'Enterprise HR Platform',
+    name: 'RightlyHR',
+    subtitle: 'Human Resource Management System',
+    role: 'Full Stack Developer',
+    techFocus: 'Angular + ASP.NET',
+    color: green, colorDim: greenDim, colorBdr: greenBdr,
+    problem: 'Organisations required a centralised system to manage employee records, leave approvals, onboarding, offboarding, project allocation, and reporting. Existing manual processes lacked visibility, consistency, and auditability across HR operations.',
+    solution: 'Contributed to a comprehensive HRMS platform that streamlined employee lifecycle management, approval workflows, reporting, project allocation, and secure role-based access control through a centralised Angular + ASP.NET web application.',
+    stack: ['Angular', 'ASP.NET', 'SQL Server', 'REST APIs', 'RBAC', 'JavaScript', 'HTML', 'CSS'],
+    arch: [
+      { label: 'Angular UI',      color: green,    bdr: greenBdr,    dim: greenDim },
+      { label: 'REST APIs',       color: C.blue,   bdr: C.blueBdr,   dim: C.blueDim },
+      { label: 'ASP.NET Backend', color: C.cyan,   bdr: C.cyanBdr,   dim: C.cyanDim },
+      { label: 'SQL Server',      color: green,    bdr: greenBdr,    dim: greenDim },
+    ],
+    impact: [
+      { n: 'Central', l: 'Unified HR operations hub' },
+      { n: 'Auto',    l: 'Approval workflow automation' },
+      { n: 'RBAC',    l: 'Secure role-based access' },
+      { n: 'E2E',     l: 'Employee lifecycle coverage' },
+    ],
+    bullets: [
+      'Developed onboarding and offboarding workflows with multi-stage approval processes',
+      'Implemented leave management, approval routing, and employee information modules',
+      'Built role-based authorisation and secure access control across all HR modules',
+      'Created reporting and dashboard functionality for HR operations visibility',
+      'Enhanced workflow automation across leave, allocation, and lifecycle management processes',
     ],
   },
 ];
@@ -73,7 +111,7 @@ const Projects = () => {
         <SectionTitle>Case studies in scalable engineering</SectionTitle>
 
         {/* tabs */}
-        <div style={{ display: 'flex', gap: 8, marginBottom: 28 }}>
+        <div style={{ display: 'flex', gap: 8, marginBottom: 28, flexWrap: 'wrap' }}>
           {projects.map((pr, i) => (
             <button key={i} onClick={() => setActive(i)} style={{
               fontSize: 13, fontWeight: 500, padding: '9px 20px', borderRadius: 7, cursor: 'pointer',
@@ -94,7 +132,17 @@ const Projects = () => {
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: p.color }} />
             <div style={{ fontSize: 11, color: p.color, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>{p.tag}</div>
             <h3 style={{ fontSize: 22, fontWeight: 700, color: C.text, marginBottom: 4 }}>{p.name}</h3>
-            <p style={{ fontSize: 13, color: C.muted, marginBottom: 20 }}>{p.subtitle}</p>
+            <p style={{ fontSize: 13, color: C.muted, marginBottom: 10 }}>{p.subtitle}</p>
+            <div style={{ display: 'flex', gap: 16, marginBottom: 20 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span style={{ fontSize: 10, color: C.dim, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Role</span>
+                <span style={{ fontSize: 11, color: C.text, fontWeight: 500, background: C.bg3, border: `0.5px solid ${C.border2}`, padding: '2px 8px', borderRadius: 4 }}>{p.role}</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span style={{ fontSize: 10, color: C.dim, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Stack</span>
+                <span style={{ fontSize: 11, color: p.color, fontWeight: 500, background: p.colorDim, border: `0.5px solid ${p.colorBdr}`, padding: '2px 8px', borderRadius: 4 }}>{p.techFocus}</span>
+              </div>
+            </div>
 
             <div style={{ marginBottom: 18 }}>
               <p style={{ fontSize: 11, color: C.dim, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 7 }}>Problem</p>
