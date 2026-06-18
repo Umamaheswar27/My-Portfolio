@@ -4,24 +4,24 @@ import Section from '../ui/Section';
 import { SectionTag, SectionTitle, Chip } from '../ui/Typography';
 
 const achievements = [
-  { metric: '40–50%',     desc: 'Scalability gain via RabbitMQ event-driven async workflows' },
-  { metric: '40%',        desc: 'Reduction in API polling through WebSocket real-time communication' },
-  { metric: '25–30%',     desc: 'API response time improvement via PostgreSQL query & index optimisation' },
-  { metric: 'End-to-End', desc: 'Ownership across ride-booking and enterprise data migration domains' },
-  { metric: 'Multi-role', desc: 'OAuth 2.0 + RBAC secure authentication & authorisation systems' },
-  { metric: 'Modular',    desc: 'Spring Boot microservices following clean, maintainable architecture principles' },
+  { metric: '2.2 Yrs',    desc: 'Professional experience building production enterprise applications' },
+  { metric: '40%',        desc: 'Reduction in API polling via WebSocket real-time communication' },
+  { metric: '50%',        desc: 'Reduction in manual migration effort via workflow automation' },
+  { metric: '25–30%',     desc: 'API response time improvement via PostgreSQL query optimisation' },
+  { metric: 'End-to-End', desc: 'Full stack ownership across Java backend and Angular frontend' },
+  { metric: 'Oracle',     desc: 'Fusion Cloud integration with stored procedures and audit pipelines' },
 ];
 
-const stack = ['Java', 'Spring Boot', 'Angular', 'TypeScript', 'RabbitMQ', 'WebSocket', 'PostgreSQL', 'OAuth 2.0', 'RBAC', 'JWT', 'Hibernate/JPA', 'REST APIs', 'Git', 'Maven', 'Docker', 'AWS', 'CI/CD', 'Agile/Scrum'];
+const stack = ['Java', 'Spring Boot', 'Angular', 'TypeScript', 'WebSocket', 'RabbitMQ', 'PostgreSQL', 'Oracle', 'PL/SQL', 'OAuth 2.0', 'JWT', 'RBAC', 'REST APIs', 'Hibernate/JPA', 'Git', 'Maven', 'Docker', 'AWS', 'Agile/Scrum'];
 
 const responsibilities = [
-  'Delivered production-grade full-stack applications with end-to-end feature ownership',
-  'Designed modular Spring Boot microservices architecture',
-  'Built event-driven async workflows using RabbitMQ',
-  'Implemented real-time WebSocket communication layer',
-  'Optimised PostgreSQL queries and indexing strategies',
-  'Built OAuth 2.0 + RBAC multi-role security systems',
-  'Collaborated in Agile/Scrum cross-functional teams',
+  'Built enterprise full-stack applications with end-to-end feature ownership',
+  'Developed real-time systems using WebSocket for ride tracking and live updates',
+  'Automated Oracle Fusion Cloud migration workflows with retry and audit mechanisms',
+  'Designed and implemented REST APIs with OAuth 2.0 and RBAC security',
+  'Optimised PostgreSQL queries and indexing for improved API performance',
+  'Contributed to HRMS platform with approval workflows and lifecycle management',
+  'Collaborated in Agile/Scrum cross-functional delivery teams',
 ];
 
 const Experience = () => (
@@ -42,11 +42,17 @@ const Experience = () => (
               <div style={{ fontSize: 11, color: C.dim }}>Hyderabad, Telangana</div>
             </div>
             <div style={{ fontSize: 11, color: C.cyan, background: C.cyanDim, border: `0.5px solid ${C.cyanBdr}`, padding: '4px 10px', borderRadius: 20, whiteSpace: 'nowrap' }}>
-              Apr 2024 – May 2026
+              Apr 2024 – Present
             </div>
           </div>
 
-          <div style={{ margin: '18px 0', borderTop: `0.5px solid ${C.border}` }} />
+          <div style={{ margin: '12px 0 16px', display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {['VALAM', 'AECCAR', 'RightlyHR'].map(p => (
+              <span key={p} style={{ fontSize: 11, color: C.blue, background: C.blueDim, border: `0.5px solid ${C.blueBdr}`, padding: '3px 10px', borderRadius: 20 }}>{p}</span>
+            ))}
+          </div>
+
+          <div style={{ margin: '4px 0 18px', borderTop: `0.5px solid ${C.border}` }} />
 
           <div className="exp-achievements-grid">
             {achievements.map((a, i) => (
