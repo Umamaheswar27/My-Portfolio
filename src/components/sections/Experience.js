@@ -42,7 +42,7 @@ const Experience = () => (
               <div style={{ fontSize: 11, color: C.dim }}>Hyderabad, Telangana</div>
             </div>
             <div style={{ fontSize: 11, color: C.cyan, background: C.cyanDim, border: `0.5px solid ${C.cyanBdr}`, padding: '4px 10px', borderRadius: 20, whiteSpace: 'nowrap' }}>
-              Apr 2024 – Present
+              Apr 2024 – May 2026
             </div>
           </div>
 
