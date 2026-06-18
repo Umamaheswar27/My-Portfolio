@@ -40,8 +40,14 @@ const Navigation = () => {
       transition: 'background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease',
     }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '100%' }}>
-        <a href="#hero" style={{ textDecoration: 'none' }}>
-          <span style={{ fontSize: 15, fontWeight: 700, color: C.text, letterSpacing: '0.02em' }}>
+        <a href="#hero" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{
+            width: 32, height: 32, borderRadius: 8,
+            background: C.blueDim, border: `0.5px solid ${C.blueBdr}`,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 13, fontWeight: 700, color: C.blue, letterSpacing: '0.02em',
+          }}>U</span>
+          <span style={{ fontSize: 14, fontWeight: 700, color: C.text, letterSpacing: '0.02em' }}>
             UMS<span style={{ color: C.blue }}>.</span>
           </span>
         </a>
