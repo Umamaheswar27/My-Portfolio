@@ -13,7 +13,10 @@ const Footer = () => (
     maxWidth: 1100, margin: '0 auto',
     display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12,
   }}>
-    <span style={{ fontSize: 12, color: C.dim }}>© 2026 Uma Maheswara Sai Danda. All rights reserved.</span>
+    <div>
+      <div style={{ fontSize: 13, fontWeight: 600, color: C.text, marginBottom: 3 }}>Uma Maheswara Sai Danda</div>
+      <div style={{ fontSize: 11, color: C.dim }}>© {new Date().getFullYear()} · Java Full Stack Engineer · Hyderabad, India</div>
+    </div>
     <div style={{ display: 'flex', gap: 20 }}>
       {footerLinks.map((l, i) => (
         <a key={i} href={l.href} target="_blank" rel="noreferrer"

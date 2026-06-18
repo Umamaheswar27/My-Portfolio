@@ -35,6 +35,13 @@ const Hero = () => {
 
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', width: '100%', paddingTop: 100 }}>
         {/* availability badge */}
+        <div style={{ marginBottom: 16 }}>
+          <div style={{ fontSize: 13, color: C.dim, marginBottom: 4 }}>Hi, I'm</div>
+          <div style={{ fontSize: 22, fontWeight: 700, color: C.text, letterSpacing: '0.01em' }}>
+            Uma Maheswara Sai <span style={{ color: C.blue }}>Danda</span>
+          </div>
+        </div>
+
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
           border: `0.5px solid ${C.blueBdr}`, background: C.blueDim,
