@@ -9,6 +9,7 @@ const expertise = [
   { label: 'Angular',       color: C.cyan,   dim: C.cyanDim,   bdr: C.cyanBdr },
   { label: 'REST APIs',     color: C.blue,   dim: C.blueDim,   bdr: C.blueBdr },
   { label: 'WebSocket',     color: C.cyan,   dim: C.cyanDim,   bdr: C.cyanBdr },
+  { label: 'Kafka',        color: C.violet, dim: C.violetDim, bdr: C.violetBdr },
   { label: 'RabbitMQ',      color: C.violet, dim: C.violetDim, bdr: C.violetBdr },
   { label: 'PostgreSQL',    color: C.blue,   dim: C.blueDim,   bdr: C.blueBdr },
   { label: 'Oracle',        color: C.violet, dim: C.violetDim, bdr: C.violetBdr },
