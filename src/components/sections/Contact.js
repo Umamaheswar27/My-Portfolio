@@ -10,7 +10,7 @@ const PUBLIC_KEY  = 'NlqqhoN3cbI1zbPsK';
 
 const links = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/uma-maheswara-sai-danda', icon: 'in', desc: 'linkedin.com/in/uma-maheswara-sai-danda' },
-  { label: 'GitHub',   href: 'https://github.com/uma-sai-danda',                    icon: 'gh', desc: 'github.com/uma-sai-danda' },
+  { label: 'GitHub',   href: 'https://github.com/Umamaheswar27',                    icon: 'gh', desc: 'github.com/uma-maheswara-sai-danda' },
   { label: 'Email',    href: 'mailto:danda.ums09@gmail.com',                         icon: '✉',  desc: 'danda.ums09@gmail.com' },
   { label: 'Phone',    href: 'tel:+918639374798',                                    icon: '☎',  desc: '+91 8639374798' },
 ];

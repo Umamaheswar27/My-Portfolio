@@ -4,21 +4,21 @@ import Section from '../ui/Section';
 import { SectionTag, SectionTitle } from '../ui/Typography';
 
 const items = [
-  { title: 'Microservices Architecture', desc: 'Designed and shipped modular Spring Boot microservices in real production environments.' },
-  { title: 'Real-Time Systems',          desc: 'Implemented WebSocket-based bidirectional communication reducing API polling by 40%.' },
-  { title: 'Event-Driven Design',        desc: 'Built RabbitMQ async workflows improving throughput and scalability by 40–50%.' },
-  { title: 'Enterprise Development',     desc: 'Delivered end-to-end features across ride-booking and Oracle data migration platforms.' },
-  { title: 'Secure Application Design',  desc: 'Implemented OAuth 2.0, JWT, and RBAC across multi-role production applications.' },
-  { title: 'Performance Optimisation',   desc: 'Improved API response times 25–30% through PostgreSQL query tuning and indexing.' },
-  { title: 'Full Stack Delivery',        desc: 'Java backend + Angular frontend — own the whole feature from DB schema to UI.' },
-  { title: 'Production-Grade Quality',   desc: 'Write clean, maintainable code that teammates can extend with confidence.' },
-  { title: 'Agile Collaboration',        desc: 'Experienced in cross-functional Agile/Scrum teams with strong communication skills.' },
+  { title: 'Real-Time Driver Tracking',        desc: 'Built WebSocket-based bidirectional communication for live ride tracking with sub-second latency.' },
+  { title: 'Oracle Fusion Cloud Integration',  desc: 'Integrated Oracle stored procedures for enterprise-scale Fusion Cloud migration workflows.' },
+  { title: 'Scheduler Audit & Retry Logic',    desc: 'Implemented scheduler audit logging and retry-based failure recovery for migration pipelines.' },
+  { title: 'Workflow Automation Platforms',    desc: 'Automated end-to-end migration and HR workflows reducing manual effort by up to 50%.' },
+  { title: 'Role-Based Access Control',        desc: 'Implemented OAuth 2.0, JWT, and RBAC across multi-role production enterprise applications.' },
+  { title: 'Enterprise REST API Development',  desc: 'Designed and delivered scalable REST APIs with security, validation, and performance optimisation.' },
+  { title: 'Approval Workflow Systems',        desc: 'Built multi-level approval workflows for HR lifecycle and enterprise process management.' },
+  { title: 'Event-Driven Architecture',        desc: 'Designed RabbitMQ async workflows improving system throughput and scalability by 40–50%.' },
+  { title: 'Full Stack Delivery',              desc: 'Java Spring Boot backend + Angular frontend — end-to-end feature ownership from DB to UI.' },
 ];
 
 const WhyHireMe = () => (
   <Section id="why">
     <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px' }}>
-      <SectionTag>Why Hire Me</SectionTag>
+      <SectionTag>Engineering Highlights</SectionTag>
       <SectionTitle>What I bring to your team</SectionTitle>
 
       <div className="why-grid">

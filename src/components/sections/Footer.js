@@ -3,7 +3,7 @@ import { C } from '../../constants/tokens';
 
 const footerLinks = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/uma-maheswara-sai-danda' },
-  { label: 'GitHub',   href: 'https://github.com/uma-sai-danda' },
+  { label: 'GitHub',   href: 'https://github.com/Umamaheswar27' },
   { label: 'Email',    href: 'mailto:danda.ums09@gmail.com' },
 ];
 

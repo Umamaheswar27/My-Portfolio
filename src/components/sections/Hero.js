@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { C } from '../../constants/tokens';
 
-const roles = [
-  'Spring Boot Architect',
-  'Microservices Engineer',
-  'Real-Time Systems Dev',
-  'Event-Driven Builder',
+const stats = [
+  { n: '2.2',  l: 'Years Experience' },
+  { n: '3+',   l: 'Production Apps' },
+  { n: '10+',  l: 'Core Technologies' },
+  { n: 'Open', l: 'Immediate Joiner' },
 ];
 
-const stats = [
-  { n: '2+',  l: 'Years Experience' },
-  { n: '3+',  l: 'Projects Delivered' },
-  { n: '40%', l: 'Avg. Efficiency Gain' },
-  { n: '10+', l: 'Core Technologies' },
+const roles = [
+  'Java Full Stack Engineer',
+  'Spring Boot + Angular Dev',
+  'Real-Time Systems Builder',
+  'Enterprise App Developer',
 ];
 
 const Hero = () => {
@@ -44,22 +44,21 @@ const Hero = () => {
           <span style={{ fontSize: 12, color: C.blue }}>Available for new opportunities</span>
         </div>
 
-        <h1 style={{ fontSize: 'clamp(32px, 5.5vw, 58px)', fontWeight: 700, color: C.text, lineHeight: 1.12, marginBottom: 12, maxWidth: 780 }}>
-          Building Scalable Backend<br />
-          Systems &amp;{' '}
-          <span style={{ color: C.blue }}>Real-Time Applications</span>
+        <h1 style={{ fontWeight: 700, color: C.text, lineHeight: 1.15, marginBottom: 12, maxWidth: 780 }}>
+          <div style={{ fontSize: 'clamp(32px, 5.5vw, 56px)' }}>Java Full Stack Engineer</div>
+          <div style={{ fontSize: 'clamp(14px, 2vw, 20px)', color: C.blue, fontWeight: 500, marginTop: 8, letterSpacing: '0.01em' }}>Enterprise Apps · Real-Time Systems · Workflow Automation</div>
         </h1>
 
         {/* animated role */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
-          <span style={{ fontSize: 14, color: C.dim }}>Currently:</span>
+          <span style={{ fontSize: 14, color: C.dim }}>Specialising in:</span>
           <span key={tick} style={{ fontSize: 14, color: C.cyan, fontWeight: 500, animation: 'fadeSlideIn 0.5s ease' }}>
             {roles[tick]}
           </span>
         </div>
 
         <p style={{ fontSize: 16, color: C.muted, lineHeight: 1.75, maxWidth: 580, marginBottom: 36 }}>
-          Full Stack Java Developer with expertise in Spring Boot, Angular, Microservices, Event-Driven Architecture, and Secure Enterprise Solutions.
+          Full Stack Engineer with 2.2 years of experience building scalable applications using Java, Spring Boot, Angular, REST APIs, WebSocket, RabbitMQ, PostgreSQL, and Oracle. Experienced in real-time systems, enterprise integrations, workflow automation, and secure application development.
         </p>
 
         {/* CTAs */}
@@ -82,14 +81,10 @@ const Hero = () => {
             onMouseLeave={e => e.currentTarget.style.borderColor = C.border2}>
             View Resume
           </a>
-          <a href="#contact" style={{
-            fontSize: 13, color: C.muted, border: `0.5px solid ${C.border}`,
-            padding: '11px 24px', borderRadius: 7, textDecoration: 'none', transition: 'color 0.2s',
-          }}
-            onMouseEnter={e => e.currentTarget.style.color = C.text}
-            onMouseLeave={e => e.currentTarget.style.color = C.muted}>
-            Let's Connect →
-          </a>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '11px 16px', borderRadius: 7, border: `0.5px solid rgba(34,197,94,0.3)`, background: 'rgba(34,197,94,0.06)' }}>
+            <span style={{ width: 6, height: 6, background: '#22c55e', borderRadius: '50%', boxShadow: '0 0 6px #22c55e' }} />
+            <span style={{ fontSize: 13, color: '#22c55e', fontWeight: 500 }}>Immediate Joiner</span>
+          </div>
         </div>
 
         {/* stat bar */}

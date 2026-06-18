@@ -4,12 +4,12 @@ import Section from '../ui/Section';
 import { SectionTag, SectionTitle } from '../ui/Typography';
 
 const facts = [
-  { label: 'Degree',         value: 'B.Tech · VVIT Guntur' },
+  { label: 'Experience',     value: '2.2 Years · Production Apps' },
   { label: 'Current Role',   value: 'Software Engineer @ SNAD Dev' },
-  { label: 'Specialisation', value: 'Microservices · Real-Time · Security' },
+  { label: 'Specialisation', value: 'Enterprise Apps · Real-Time · Integrations' },
   { label: 'Location',       value: 'Hyderabad, India · Remote-Ready' },
-  { label: 'Education',      value: 'Aug 2019 – Jun 2023' },
-  { label: 'Status',         value: 'Open to Full-Time & Remote Roles' },
+  { label: 'Education',      value: 'B.Tech · VVIT Guntur · 2023' },
+  { label: 'Status',         value: 'Immediate Joiner · Open to Opportunities' },
 ];
 
 const About = () => (
@@ -21,13 +21,13 @@ const About = () => (
       <div className="about-grid">
         <div>
           <p style={{ fontSize: 15, color: C.muted, lineHeight: 1.85, marginBottom: 18 }}>
-            I'm a B.Tech graduate turned full-stack engineer who specialises in production-grade Java systems that survive traffic spikes, distributed failures, and enterprise complexity.
+            Full Stack Engineer with 2.2 years of experience developing enterprise-grade applications using Java, Spring Boot, Angular, and modern web technologies.
           </p>
           <p style={{ fontSize: 15, color: C.muted, lineHeight: 1.85, marginBottom: 18 }}>
-            At SNAD Developers, I've shipped microservice architectures, real-time WebSocket ride-booking platforms, and event-driven RabbitMQ pipelines — all in production, not just in demos.
+            Experienced in building real-time platforms, workflow automation systems, Oracle Fusion integrations, and scalable REST APIs — all shipped to production at SNAD Developers.
           </p>
           <p style={{ fontSize: 15, color: C.muted, lineHeight: 1.85 }}>
-            I care deeply about maintainability, measurable performance, and secure design — writing code that teammates can read, extend, and trust six months after delivery.
+            Passionate about creating maintainable software, solving real business problems, and designing systems that scale — writing code that teams can extend and trust long after delivery.
           </p>
         </div>
 

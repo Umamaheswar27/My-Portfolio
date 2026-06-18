@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { C } from '../../constants/tokens';
 
-const links = ['About', 'Experience', 'Projects', 'Skills'];
+const links = ['About', 'Expertise', 'Experience', 'Projects', 'Skills'];
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
