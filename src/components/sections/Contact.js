@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { C } from '../../constants/tokens';
 import Section from '../ui/Section';
@@ -15,24 +15,58 @@ const links = [
   { label: 'Phone',    href: 'tel:+918639374798',                                    icon: '☎',  desc: '+91 8639374798' },
 ];
 
-const inputStyle = {
-  width: '100%', background: C.bg3, border: `0.5px solid ${C.border2}`,
+const inputStyle = (hasError) => ({
+  width: '100%', background: C.bg3,
+  border: `0.5px solid ${hasError ? '#f87171' : C.border2}`,
   borderRadius: 8, padding: '10px 13px', color: C.text, fontSize: 13,
   outline: 'none', fontFamily: 'inherit', transition: 'border-color 0.2s',
+});
+
+const validate = ({ name, email, message }) => {
+  const errors = {};
+  if (!name.trim())                              errors.name    = 'Name is required';
+  if (!email.trim())                             errors.email   = 'Email is required';
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Enter a valid email';
+  if (!message.trim())                           errors.message = 'Message is required';
+  return errors;
 };
 
 const Contact = () => {
-  const formRef = useRef();
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [form,   setForm]   = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
-  const handle = e => setForm({ ...form, [e.target.name]: e.target.value });
+  const handle = e => {
+    const { name, value } = e.target;
+    setForm(f => ({ ...f, [name]: value }));
+    if (errors[name]) setErrors(er => ({ ...er, [name]: '' }));
+  };
 
   const submit = e => {
     e.preventDefault();
+    const errs = validate(form);
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+
     setStatus('sending');
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
-      .then(() => { setStatus('sent'); setForm({ name: '', email: '', subject: '', message: '' }); })
+
+    // Using emailjs.send() with explicit params guarantees
+    // from_name and from_email are passed correctly regardless
+    // of HTML input name attributes.
+    emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      {
+        from_name:  form.name.trim(),
+        from_email: form.email.trim(),
+        message:    form.message.trim(),
+      },
+      PUBLIC_KEY
+    )
+      .then(() => {
+        setStatus('sent');
+        setForm({ name: '', email: '', message: '' });
+        setErrors({});
+      })
       .catch(() => setStatus('error'));
   };
 
@@ -76,25 +110,52 @@ const Contact = () => {
               <div style={{ textAlign: 'center', padding: '32px 0' }}>
                 <div style={{ fontSize: 32, marginBottom: 12, color: C.cyan }}>✓</div>
                 <div style={{ fontSize: 16, fontWeight: 600, color: C.text, marginBottom: 8 }}>Message sent!</div>
-                <div style={{ fontSize: 13, color: C.muted }}>I'll get back to you within 24 hours.</div>
+                <div style={{ fontSize: 13, color: C.muted, marginBottom: 16 }}>I'll get back to you within 24 hours.</div>
+                <button onClick={() => setStatus('idle')} style={{
+                  fontSize: 12, color: C.blue, background: C.blueDim,
+                  border: `0.5px solid ${C.blueBdr}`, borderRadius: 6,
+                  padding: '7px 16px', cursor: 'pointer',
+                }}>Send another message</button>
               </div>
             ) : (
-              <form ref={formRef} onSubmit={submit}>
+              <form onSubmit={submit} noValidate>
                 <p style={{ fontSize: 13, fontWeight: 600, color: C.text, marginBottom: 18 }}>Send a message</p>
+
                 <div className="contact-form-row">
-                  <input name="from_name" value={form.name} onChange={e => setForm({...form, name: e.target.value})} placeholder="Your name" required style={inputStyle}
-                    onFocus={e => e.target.style.borderColor = C.blue} onBlur={e => e.target.style.borderColor = C.border2} />
-                  <input name="from_email" type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} placeholder="Email address" required style={inputStyle}
-                    onFocus={e => e.target.style.borderColor = C.blue} onBlur={e => e.target.style.borderColor = C.border2} />
+                  <div>
+                    <input
+                      name="name" value={form.name} onChange={handle}
+                      placeholder="Your name" style={inputStyle(!!errors.name)}
+                      onFocus={e => e.target.style.borderColor = C.blue}
+                      onBlur={e => e.target.style.borderColor = errors.name ? '#f87171' : C.border2} />
+                    {errors.name && <p style={{ fontSize: 11, color: '#f87171', marginTop: 4 }}>{errors.name}</p>}
+                  </div>
+                  <div>
+                    <input
+                      name="email" type="email" value={form.email} onChange={handle}
+                      placeholder="Email address" style={inputStyle(!!errors.email)}
+                      onFocus={e => e.target.style.borderColor = C.blue}
+                      onBlur={e => e.target.style.borderColor = errors.email ? '#f87171' : C.border2} />
+                    {errors.email && <p style={{ fontSize: 11, color: '#f87171', marginTop: 4 }}>{errors.email}</p>}
+                  </div>
                 </div>
-                <input name="subject" value={form.subject} onChange={handle} placeholder="Subject" style={{ ...inputStyle, marginBottom: 10 }}
-                  onFocus={e => e.target.style.borderColor = C.blue} onBlur={e => e.target.style.borderColor = C.border2} />
-                <textarea name="message" value={form.message} onChange={handle} placeholder="Your message..." required rows={4}
-                  style={{ ...inputStyle, resize: 'vertical', marginBottom: 14 }}
-                  onFocus={e => e.target.style.borderColor = C.blue} onBlur={e => e.target.style.borderColor = C.border2} />
+
+                <div style={{ marginBottom: 10 }}>
+                  <textarea
+                    name="message" value={form.message} onChange={handle}
+                    placeholder="Your message..." rows={5}
+                    style={{ ...inputStyle(!!errors.message), resize: 'vertical', marginBottom: 0 }}
+                    onFocus={e => e.target.style.borderColor = C.blue}
+                    onBlur={e => e.target.style.borderColor = errors.message ? '#f87171' : C.border2} />
+                  {errors.message && <p style={{ fontSize: 11, color: '#f87171', marginTop: 4 }}>{errors.message}</p>}
+                </div>
+
                 {status === 'error' && (
-                  <p style={{ fontSize: 12, color: '#f87171', marginBottom: 10 }}>Something went wrong. Please try again.</p>
+                  <div style={{ fontSize: 12, color: '#f87171', background: 'rgba(248,113,113,0.08)', border: '0.5px solid rgba(248,113,113,0.3)', borderRadius: 6, padding: '8px 12px', marginBottom: 12 }}>
+                    ⚠ Something went wrong. Please try again or email me directly.
+                  </div>
                 )}
+
                 <button type="submit" disabled={status === 'sending'} style={{
                   width: '100%', background: C.blue, color: '#fff',
                   border: 'none', borderRadius: 8, padding: '11px 0', fontSize: 13, fontWeight: 600,
@@ -102,7 +163,7 @@ const Contact = () => {
                   opacity: status === 'sending' ? 0.7 : 1,
                   transition: 'transform 0.15s, box-shadow 0.15s',
                 }}
-                  onMouseEnter={e => { if(status !== 'sending') { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(79,142,247,0.35)'; }}}
+                  onMouseEnter={e => { if (status !== 'sending') { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(79,142,247,0.35)'; } }}
                   onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
                   {status === 'sending' ? 'Sending...' : 'Send Message →'}
                 </button>
